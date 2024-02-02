@@ -1,0 +1,222 @@
+*{
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    transition: all;
+    transition-duration: 500ms;
+}
+
+:root {
+    --primary : #0f172a;
+    --img1:  url(https://dyscova.com/wp-content/uploads/2022/07/destination-5-306x306.jpg);
+    --img2:  url(https://dyscova.com/wp-content/uploads/2022/07/destination-4-306x306.jpg);
+    --img3:  url(https://dyscova.com/wp-content/uploads/2022/07/destination-03-636x306.jpg);
+    --img4:  url(https://dyscova.com/wp-content/uploads/2022/07/destination-02-636x306.jpg);
+}
+
+@keyframes slidein {
+    60% {
+        margin-left: -11.7647rem;
+    }
+    80% {
+        margin-left: 0;
+        transform: rotate(0deg) translateY(250px);
+        font-size: 1.2rem;
+    }
+    100% {
+        margin-left: 0;
+        margin-top: 0;
+        transform: rotate(0deg) translateY(250px);
+        font-size: 2rem;
+    }
+  }
+@keyframes slideout {
+0% {
+    margin-left: 0;
+    margin-top: 0;
+    margin-left: -11.7647rem;
+}
+20% {
+}
+60% {
+    transform: rotate(90deg);
+    
+}
+100% {
+    font-size: 1.5rem;
+    transform: rotate(90deg);
+}
+}
+body {
+    background-color:  var(--primary);
+    background-image: url(https://picsum.photos/id/70/400/300?blur=5&random=1);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    section {
+        display: grid;
+        height: 100dvh;
+        place-content: center;
+        transition: all;
+        transition-duration: 500ms;
+        &:has(.card:hover) {
+            backdrop-filter: blur(15px) grayscale(90%);
+        }
+    }
+
+    .gallery {
+        display: flex   ;
+        gap: 1.2rem;
+        height: 350px;
+        max-width: 800px;
+        min-width: 300px;
+        transition: all;
+        transition-duration: 500ms;
+        color: white;
+        .card {
+            border : 1px solid white;
+            border-radius: .7059rem;
+            cursor: pointer;
+            transition: all;
+            transition-duration: 500ms;
+            flex: 1;
+            position: relative ;
+            overflow: hidden;
+            & h3 {
+                filter: blur(0px) grayscale(0%) !important ;
+                text-shadow: 0.5px 0.5px 0.5px gray, 0 0 0.2em var(--primary);
+                letter-spacing: 0.3rem;
+                transform: rotate(90deg);
+                left: 0;
+                transform-origin: top left;
+                width: max-content;
+                margin-left: 2.9412rem;
+                margin-top: 1rem;
+                transition: all 500ms; 
+                text-transform: uppercase;
+            }
+            
+            .infos {
+
+                transition: all;
+                position: absolute;
+                width: max-content;
+                background: rgb(5,96,179);
+                background: linear-gradient(0deg, var(--primary) 12%, transparent 100%);
+                left: 0;
+                bottom: -200px;
+                transition: all;
+                transition-duration: 500ms;
+                width: 100%;                
+                & > div {
+                    padding: 1.5rem;
+                    display: flex ;
+                    justify-content: space-between;
+                }
+            .stars {
+                path{
+                    stroke: yellow;
+                }
+                svg:hover {
+                    transform: scale(1.1);
+                    path {
+                        fill: yellow
+                    }
+                }    
+            }
+            .actions {
+                display: flex;
+                gap: 10px ;
+                svg {
+                    &:nth-child(1) {
+                        rotate: 180deg;
+                    }
+                    &:hover {
+                        scale: 1.2;
+                    }
+                }
+                path, rect {
+                    stroke: white;
+                }
+            } 
+            }
+            & > .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;            
+                filter: blur(1.5px) grayscale(90%) ;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                object-fit: cover;
+            }
+            &:nth-child(1) .img {
+                background-image: var(--img1);
+            }
+            &:nth-child(2) .img{
+                background-image: var(--img2);
+            }
+            &:nth-child(3) .img{
+                background-image: var(--img3);
+            }
+            &:nth-child(4) .img{
+                background-image: var(--img4);
+            }
+
+            &:hover {
+                flex: 6;
+                transform: scale(1.07);
+                margin-left: 1rem;
+                margin-right: 1rem;
+                padding-left: 1.5rem;
+                border-color: blueviolet;
+                & > .img {
+                    filter: blur(0px) grayscale(0%) ;
+                }
+                & h3 {
+                    animation: slidein 1s normal forwards; 
+                }
+                .infos {
+                    bottom: 0;
+                    transition-delay: 0.5s;
+                }
+            }
+            &:not(:hover) {
+                h3 {
+                    animation: slideout 1s normal forwards;
+                }
+            }
+
+        }
+    }
+}
+
+body:has(.card:nth-child(1):hover) {
+    background-image: var(--img1) ;
+}
+body:has(.card:nth-child(2):hover) {
+    background-image: var(--img2) ;
+}
+body:has(.card:nth-child(3):hover) {
+    background-image: var(--img3) ;
+}
+body:has(.card:nth-child(4):hover) {
+    background-image: var(--img4) ;
+}
+
+.copy {
+    margin-top: 3rem;
+    text-align: center;
+    color: white;
+
+    a {
+        color: blueviolet;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
